@@ -28,4 +28,15 @@ public class CheckliteSolutionTest {
     public void compute_checklite_discounted_sku() {
         assertThat(checkLiteSol.checklite("AAAA"), equalTo(180));
     }
+
+    @Test
+    public void compute_checklite_complex_discounted_sku() {
+        assertThat(checkLiteSol.checklite("AABDBACAB"), equalTo(290));
+    }
+
+    @Test
+    public void compute_checklite_skus_with_one_invalid_sku() {
+        assertThat(checkLiteSol.checklite("AABDKBACA"), equalTo(260));
+    }
 }
+
