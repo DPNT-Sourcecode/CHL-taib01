@@ -16,6 +16,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void compute_checklite() {
-        assertThat(checkLiteSol.checklite("Test"), equalTo(-1));
+        assertThat(checkLiteSol.checklite(".,#$"), equalTo(-1));
     }
 }
+
