@@ -1,5 +1,7 @@
 package befaster.solutions.CHL;
 
+import java.util.Arrays;
+
 public class CheckliteSolution {
     public Integer checklite(String skus) {
         if (skus == null || skus.equals("")) {
@@ -16,6 +18,8 @@ public class CheckliteSolution {
 
             skus_chars_count[index] += 1;
         }
+
+        System.out.print(Arrays.toString(skus_chars_count));
 
         int price = 0;
         for (int i = 0, length = skus_chars_count.length; i < length; i += 1) {
@@ -40,6 +44,7 @@ public class CheckliteSolution {
         }
     }
 }
+
 
 
 
