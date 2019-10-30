@@ -44,6 +44,8 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("AAAAABBE"), equalTo(285));
         assertThat(checkLiteSol.checklite("AAAAABBEE"), equalTo(310));
         assertThat(checkLiteSol.checklite("EEB"), equalTo(80));
+        assertThat(checkLiteSol.checklite("KKAB"), equalTo(230));
+        assertThat(checkLiteSol.checklite("QRRR"), equalTo(150));
     }
 
     @Test
@@ -65,3 +67,4 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("AAFFFFE"), equalTo(170));
     }
 }
+
