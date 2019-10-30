@@ -19,8 +19,7 @@ public class CheckliteSolution {
             // give one B for free
             if (
                 index == 4 &&
-                skus_chars_count[index] % 2 == 0 &&
-                skus_chars_count[1] > 0
+                skus_chars_count[index] % 2 == 0
             ) {
                 skus_chars_count[1] -= 1;
             }
@@ -77,6 +76,7 @@ public class CheckliteSolution {
         return (count / 2) * 45 + (count % 2) * 30;
     }
 }
+
 
 
 
