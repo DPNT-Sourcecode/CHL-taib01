@@ -1,5 +1,7 @@
 package befaster.solutions.CHL;
 
+import java.util.Arrays;
+
 public class CheckliteSolution {
     public Integer checklite(String skus) {
         // 1. count occurence of each character
@@ -16,20 +18,22 @@ public class CheckliteSolution {
             skus_chars_count[index] += 1;
         }
 
-        int price = -1;
+        System.out.println(Arrays.toString(skus_chars_count));
+
+        int price = 0;
         for (int i = 0, length = skus_chars_count.length; i < length; i += 1) {
             price += getPrice(i, skus_chars_count[i]);
         }
 
-        return price;
+        return price == 0 ? price : -1;
     }
 
     private Integer getPrice(int char_index, int count) {
         switch(char_index) {
             case 2:
-                return 20;
+                return count > 0 ? 20 : 0;
             case 3:
-                return 15;
+                return count > 0 ? 15 : 0;
             case 1:
                 return (count / 2) * 45 + (count % 2) * 30;
             case 0:
@@ -39,4 +43,5 @@ public class CheckliteSolution {
         }
     }
 }
+
 
