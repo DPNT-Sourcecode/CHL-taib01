@@ -1,9 +1,27 @@
 package befaster.solutions.CHL;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class CheckliteSolution {
     private final int MAX_SKU_RANGE = 25;
 
     private int[] prices = {50, 30, 20, 15, 40, 10, 20, 10, 35, 60, 80, 90, 15, 40, 10, 50, 30, 50, 30, 20, 40, 50, 20, 90, 10, 50};
+
+    private Map<Integer, Integer[]> basic_offers = new HashMap<Integer, Integer[]>();
+
+    private Map<Integer, Integer[]> advanced_offers = new HashMap<Integer, Integer[]>();
+
+    public CheckliteSolution() {
+        basic_offers.put(1, new Integer[] {2, 45});
+        basic_offers.put(10, new Integer[] {2, 150});
+        basic_offers.put(15, new Integer[] {5, 200});
+        basic_offers.put(16, new Integer[] {3, 80});
+
+        advanced_offers.put(0, new Integer[] {3, 130, 5, 200});
+        advanced_offers.put(7, new Integer[] {5, 45, 10, 80});
+        advanced_offers.put(21, new Integer[] {2, 90, 3, 130});
+    }
 
     public Integer checklite(String skus) {
         if (skus == null || skus.equals("")) {
@@ -44,35 +62,32 @@ public class CheckliteSolution {
             return 0;
         }
 
-        switch(char_index) {
-            case 0:
-                return getPriceOfA(count);
-            case 1:
-                return getPriceOfB(count);
-            default:
-                return count * prices[char_index];
+        if (basic_offers.containsKey(char_index)) {
+            Integer[] value = basic_offers.get(char_index);
+            return (count / value[0]) * value[1] + (count % value[0]) * prices[char_index];
+        } else if (advanced_offers.containsKey(char_index)) {
+            return getAdvancedPrice(count, prices[char_index], advanced_offers.get(char_index));
         }
+
+        return count * prices[char_index];
     }
 
-    private int getPriceOfA(int count) {
+    private int getAdvancedPrice(int count, int item_price, Integer[] value) {
         int price = 0;
         while (count > 0) {
-            if (count >= 5) {
-                price += (count / 5) * 200;
-                count = count % 5;
-            } else if (count >= 3) {
-                price += (count / 3) * 130;
-                count = count % 3;
+            if (count >= value[2]) {
+                price += (count / value[2]) * value[3];
+                count = count % value[2];
+            } else if (count >= value[0]) {
+                price += (count / value[0]) * value[1];
+                count = count % value[0];
             } else if (count > 0) {
-                price += count * 50;
+                price += count * item_price;
                 count = 0;
             }
         }
 
         return price;
     }
-
-    private int getPriceOfB(int count) {
-        return (count / 2) * 45 + (count % 2) * 30;
-    }
 }
+
