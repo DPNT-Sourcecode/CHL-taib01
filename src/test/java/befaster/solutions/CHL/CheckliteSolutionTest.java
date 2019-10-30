@@ -15,8 +15,19 @@ public class CheckliteSolutionTest {
     }
 
     @Test
-    public void compute_checklite() {
-        assertThat(checkLiteSol.checklite(".,#$"), equalTo(-1));
+    public void compute_checklite_error() {
+        assertThat(checkLiteSol.checklite("K"), equalTo(-1));
+    }
+
+    @Test
+    public void compute_checklite_success_single_sku() {
+        assertThat(checkLiteSol.checklite("A"), equalTo(50));
+    }
+
+    @Test
+    public void compute_checklite_discounted_sku() {
+        assertThat(checkLiteSol.checklite("AAAA"), equalTo(180));
     }
 }
+
 
