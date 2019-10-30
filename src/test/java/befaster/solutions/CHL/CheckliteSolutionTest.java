@@ -37,7 +37,9 @@ public class CheckliteSolutionTest {
 
     @Test
     public void compute_checklite_complex_discounted_sku() {
-        assertThat(checkLiteSol.checklite("AABDBACAB"), equalTo(290));
+        assertThat(checkLiteSol.checklite("AABBCCDD"), equalTo(215));
+        assertThat(checkLiteSol.checklite("BABDDCAC"), equalTo(215));
+        assertThat(checkLiteSol.checklite("ABCDCBAABCABBAAA"), equalTo(505));
     }
 
     @Test
@@ -46,6 +48,7 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("aACD"), equalTo(-1));
     }
 }
+
 
 
 
