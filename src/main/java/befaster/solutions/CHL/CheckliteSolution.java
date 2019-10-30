@@ -16,8 +16,10 @@ public class CheckliteSolution {
 
             skus_chars_count[index] += 1;
 
-            if (isBuyingTwoE(index, skus_chars[index])) {
+            if (isEligibleForEDiscount(index, skus_chars[index])) {
                 skus_chars_count[1] -= 1; // give 1 B for free
+            } else if (isEligibleForFDiscount(index, skus_chars[index])) {
+                skus_chars_count[5] -= 1; // give 1 F for free
             }
         }
 
@@ -29,8 +31,12 @@ public class CheckliteSolution {
         return price != 0 ? price : -1;
     }
 
-    private boolean isBuyingTwoE (int index, int count) {
+    private boolean isEligibleForEDiscount (int index, int count) {
         return index == 4 && count % 2 == 0;
+    }
+
+    private boolean isEligibleForFDiscount (int index, int count) {
+        return index == 5 && count % 3 == 0;
     }
 
     private int getPrice(int char_index, int count) {
@@ -78,4 +84,5 @@ public class CheckliteSolution {
         return (count / 2) * 45 + (count % 2) * 30;
     }
 }
+
 
