@@ -7,21 +7,17 @@ public class CheckliteSolution {
         }
 
         char[] skus_chars = skus.toCharArray();
-        int[] skus_chars_count = new int[5];
+        int[] skus_chars_count = new int[6];
         for (int i = 0, length = skus_chars.length; i < length; i += 1) {
             int index = skus_chars[i] - 'A';
-            if (index < 0 || index > 4) {
+            if (index < 0 || index > 5) {
                 return -1;
             }
 
             skus_chars_count[index] += 1;
 
-            // give one B for free
-            if (
-                index == 4 &&
-                skus_chars_count[index] % 2 == 0
-            ) {
-                skus_chars_count[1] -= 1;
+            if (isBuyingTwoE(index, skus_chars[index])) {
+                skus_chars_count[1] -= 1; // give 1 B for free
             }
         }
 
@@ -31,6 +27,10 @@ public class CheckliteSolution {
         }
 
         return price != 0 ? price : -1;
+    }
+
+    private boolean isBuyingTwoE (int index, int count) {
+        return index == 4 && count % 2 == 0;
     }
 
     private int getPrice(int char_index, int count) {
@@ -49,6 +49,8 @@ public class CheckliteSolution {
                 return count * 15;
             case 4:
                 return count * 40;
+            case 5:
+                return count * 10;
             default:
                 return 0;
         }
@@ -76,3 +78,4 @@ public class CheckliteSolution {
         return (count / 2) * 45 + (count % 2) * 30;
     }
 }
+
