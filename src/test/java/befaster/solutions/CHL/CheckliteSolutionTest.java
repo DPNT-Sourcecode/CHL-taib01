@@ -47,4 +47,10 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("AABDKBACA"), equalTo(-1));
         assertThat(checkLiteSol.checklite("aACD"), equalTo(-1));
     }
+
+    @Test
+    public void compute_checklite_freebies() {
+        assertThat(checkLiteSol.checklite("AABDEACA"), equalTo(255));
+    }
 }
+
