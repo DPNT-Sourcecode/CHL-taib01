@@ -16,7 +16,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void compute_checklite_error() {
-        assertThat(checkLiteSol.checklite("K"), equalTo(-1));
+        assertThat(checkLiteSol.checklite("k"), equalTo(-1));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void compute_checklite_skus_with_one_invalid_sku() {
-        assertThat(checkLiteSol.checklite("AABDKBACA"), equalTo(-1));
+        assertThat(checkLiteSol.checklite("AABDxBACA"), equalTo(-1));
         assertThat(checkLiteSol.checklite("aACD"), equalTo(-1));
     }
 
@@ -65,4 +65,3 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("AAFFFFE"), equalTo(170));
     }
 }
-

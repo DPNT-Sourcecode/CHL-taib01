@@ -1,16 +1,20 @@
 package befaster.solutions.CHL;
 
 public class CheckliteSolution {
+    private final int MAX_SKU_RANGE = 25;
+
+    private int[] prices = {50, 30, 20, 15, 40, 10, 20, 10, 35, 60, 80, 90, 15, 40, 10, 50, 30, 50, 30, 20, 40, 50, 20, 90, 10, 50};
+
     public Integer checklite(String skus) {
         if (skus == null || skus.equals("")) {
             return 0;
         }
 
         char[] skus_chars = skus.toCharArray();
-        int[] skus_chars_count = new int[6];
+        int[] skus_chars_count = new int[MAX_SKU_RANGE + 1];
         for (int i = 0, length = skus_chars.length; i < length; i += 1) {
             int index = skus_chars[i] - 'A';
-            if (index < 0 || index > 5) {
+            if (index < 0 || index > MAX_SKU_RANGE) {
                 return -1;
             }
 
@@ -36,7 +40,7 @@ public class CheckliteSolution {
     }
 
     private int getPrice(int char_index, int count) {
-        if (count <= 0) {
+        if (count <= 0 || char_index < 0 || char_index > MAX_SKU_RANGE) {
             return 0;
         }
 
@@ -45,16 +49,8 @@ public class CheckliteSolution {
                 return getPriceOfA(count);
             case 1:
                 return getPriceOfB(count);
-            case 2:
-                return count * 20;
-            case 3:
-                return count * 15;
-            case 4:
-                return count * 40;
-            case 5:
-                return count * 10;
             default:
-                return 0;
+                return count * prices[char_index];
         }
     }
 
@@ -80,6 +76,3 @@ public class CheckliteSolution {
         return (count / 2) * 45 + (count % 2) * 30;
     }
 }
-
-
-
