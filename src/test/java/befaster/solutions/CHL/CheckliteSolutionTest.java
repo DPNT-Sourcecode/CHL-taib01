@@ -58,7 +58,3 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("AABDEACA"), equalTo(285));
     }
 }
-
-
-
-

@@ -76,9 +76,3 @@ public class CheckliteSolution {
         return (count / 2) * 45 + (count % 2) * 30;
     }
 }
-
-
-
-
-
-
