@@ -16,13 +16,13 @@ public class CheckliteSolution {
 
             skus_chars_count[index] += 1;
 
-            if (isEligibleForEDiscount(index, skus_chars[index])) {
+            if (isEligibleForEDiscount(index, skus_chars_count[index])) {
                 skus_chars_count[1] -= 1; // give 1 B for free
-            } else if (isEligibleForFDiscount(index, skus_chars[index])) {
-                skus_chars_count[5] -= 1; // give 1 F for free
             }
         }
 
+        skus_chars_count[5] = skus_chars_count[5] - (skus_chars_count[5] / 3);
+        
         int price = 0;
         for (int i = 0, length = skus_chars_count.length; i < length; i += 1) {
             price += getPrice(i, skus_chars_count[i]);
@@ -33,10 +33,6 @@ public class CheckliteSolution {
 
     private boolean isEligibleForEDiscount (int index, int count) {
         return index == 4 && count % 2 == 0;
-    }
-
-    private boolean isEligibleForFDiscount (int index, int count) {
-        return index == 5 && count % 3 == 0;
     }
 
     private int getPrice(int char_index, int count) {
@@ -84,5 +80,6 @@ public class CheckliteSolution {
         return (count / 2) * 45 + (count % 2) * 30;
     }
 }
+
 
 

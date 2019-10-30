@@ -53,8 +53,16 @@ public class CheckliteSolutionTest {
     }
 
     @Test
-    public void compute_checklite_freebies() {
+    public void compute_checklite_freeBs() {
         assertThat(checkLiteSol.checklite("AABDEEACA"), equalTo(295));
         assertThat(checkLiteSol.checklite("AABDEACA"), equalTo(285));
     }
+
+    @Test
+    public void compute_checklite_freeFs() {
+        assertThat(checkLiteSol.checklite("AAFFE"), equalTo(160));
+        assertThat(checkLiteSol.checklite("AAFFFE"), equalTo(160));
+        assertThat(checkLiteSol.checklite("AAFFFFE"), equalTo(170));
+    }
 }
+
