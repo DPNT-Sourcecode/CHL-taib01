@@ -6,5 +6,3 @@ public class CheckliteSolution {
         return -1;
     }
 }
-
-
