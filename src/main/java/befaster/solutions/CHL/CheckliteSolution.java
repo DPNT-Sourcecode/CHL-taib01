@@ -2,15 +2,16 @@ package befaster.solutions.CHL;
 
 public class CheckliteSolution {
     public Integer checklite(String skus) {
-        // 1. count occurence of each character
-        // 2. compare the items with price table and calculate price for individual item
-        // 3. sum all and return
+        if (skus == null || skus.equals("")) {
+            return 0;
+        }
+
         char[] skus_chars = skus.toCharArray();
         int[] skus_chars_count = new int[4];
         for (int i = 0, length = skus_chars.length; i < length; i += 1) {
             int index = skus_chars[i] - 'A';
             if (index < 0 || index > 3) {
-                continue;
+                return -1;
             }
 
             skus_chars_count[index] += 1;
@@ -39,6 +40,7 @@ public class CheckliteSolution {
         }
     }
 }
+
 
 
 

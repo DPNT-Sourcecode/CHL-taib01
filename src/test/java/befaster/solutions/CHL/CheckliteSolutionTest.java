@@ -20,6 +20,11 @@ public class CheckliteSolutionTest {
     }
 
     @Test
+    public void compute_checklite_empty_string() {
+        assertThat(checkLiteSol.checklite(""), equalTo(0));
+    }
+
+    @Test
     public void compute_checklite_success_single_sku() {
         assertThat(checkLiteSol.checklite("A"), equalTo(50));
     }
@@ -36,7 +41,9 @@ public class CheckliteSolutionTest {
 
     @Test
     public void compute_checklite_skus_with_one_invalid_sku() {
-        assertThat(checkLiteSol.checklite("AABDKBACA"), equalTo(260));
+        assertThat(checkLiteSol.checklite("AABDKBACA"), equalTo(-1));
+        assertThat(checkLiteSol.checklite("aACD"), equalTo(-1));
     }
 }
+
 
