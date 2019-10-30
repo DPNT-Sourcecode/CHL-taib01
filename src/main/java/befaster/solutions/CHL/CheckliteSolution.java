@@ -64,7 +64,7 @@ public class CheckliteSolution {
             } else if (count >= 3) {
                 price += (count / 3) * 130;
                 count = count % 3;
-            } else {
+            } else if (count > 0) {
                 price += count * 50;
                 count = 0;
             }
@@ -77,6 +77,7 @@ public class CheckliteSolution {
         return (count / 2) * 45 + (count % 2) * 30;
     }
 }
+
 
 
 
