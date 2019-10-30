@@ -12,6 +12,8 @@ public class CheckliteSolution {
 
     private Map<Integer, Integer[]> advanced_offers = new HashMap<Integer, Integer[]>();
 
+    private Map<Integer, Integer[]> free_goodies_offers = new HashMap<Integer, Integer[]>();
+
     public CheckliteSolution() {
         basic_offers.put(1, new Integer[] {2, 45});
         basic_offers.put(10, new Integer[] {2, 150});
@@ -21,6 +23,10 @@ public class CheckliteSolution {
         advanced_offers.put(0, new Integer[] {3, 130, 5, 200});
         advanced_offers.put(7, new Integer[] {5, 45, 10, 80});
         advanced_offers.put(21, new Integer[] {2, 90, 3, 130});
+
+        free_goodies_offers.put(4, new Integer[] {2, 1});
+        free_goodies_offers.put(13, new Integer[] {3, 12});
+        free_goodies_offers.put(17, new Integer[] {3, 16});
     }
 
     public Integer checklite(String skus) {
@@ -38,8 +44,8 @@ public class CheckliteSolution {
 
             skus_chars_count[index] += 1;
 
-            if (isEligibleForEDiscount(index, skus_chars_count[index])) {
-                skus_chars_count[1] -= 1; // give 1 B for free
+            if (isEligibleForFreeItem(index, skus_chars_count[index])) {
+                skus_chars_count[free_goodies_offers.get(index)[1]] -= 1; // give 1 B for free
             }
         }
 
@@ -53,8 +59,8 @@ public class CheckliteSolution {
         return price != 0 ? price : -1;
     }
 
-    private boolean isEligibleForEDiscount (int index, int count) {
-        return index == 4 && count % 2 == 0;
+    private boolean isEligibleForFreeItem(int index, int count) {
+        return free_goodies_offers.containsKey(index) && count % free_goodies_offers.get(index)[0] == 0;
     }
 
     private int getPrice(int char_index, int count) {
@@ -90,4 +96,5 @@ public class CheckliteSolution {
         return price;
     }
 }
+
 
