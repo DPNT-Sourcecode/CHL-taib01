@@ -34,16 +34,16 @@ public class CheckliteSolution {
         return price != 0 ? price : -1;
     }
 
-    private Integer getPrice(int char_index, int count) {
+    private int getPrice(int char_index, int count) {
         if (count <= 0) {
             return 0;
         }
 
         switch(char_index) {
             case 0:
-                return (count / 3) * 130 + (count % 3) * 50;
+                return getPriceOfA(count);
             case 1:
-                return (count / 2) * 45 + (count % 2) * 30;
+                return getPriceOfB(count);
             case 2:
                 return count * 20;
             case 3:
@@ -54,7 +54,30 @@ public class CheckliteSolution {
                 return 0;
         }
     }
+
+    private int getPriceOfA(int count) {
+        int price = 0;
+        while (count > 0) {
+            if (count >= 5) {
+                price += (count / 5) * 200;
+                count = count % 5;
+            } else if (count >= 3) {
+                price += (count / 3) * 130;
+                count = count % 3;
+            } else {
+                price += count * 50;
+                count = 0;
+            }
+        }
+
+        return price;
+    }
+
+    private int getPriceOfB(int count) {
+        return (count / 2) * 45 + (count % 2) * 30;
+    }
 }
+
 
 
 
