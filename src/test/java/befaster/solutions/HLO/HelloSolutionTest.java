@@ -16,7 +16,8 @@ public class HelloSolutionTest {
     }
 
     @Test
-    public void compute_Hello() {
+    public void compute_hello() {
         assertThat(helloSol.hello("Test"), equalTo("Hello"));
     }
 }
+
