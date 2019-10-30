@@ -14,6 +14,8 @@ public class CheckliteSolution {
 
     private Map<Integer, Integer[]> free_goodies_offers = new HashMap<Integer, Integer[]>();
 
+    private int[][] free_self_offers = {new int[] {5, 2}, new int[] {20, 3}};
+
     public CheckliteSolution() {
         basic_offers.put(1, new Integer[] {2, 45});
         basic_offers.put(10, new Integer[] {2, 150});
@@ -49,8 +51,13 @@ public class CheckliteSolution {
             }
         }
 
-        skus_chars_count[5] = skus_chars_count[5] - (skus_chars_count[5] / 3);
-        
+        for (int i = 0, length = free_self_offers.length; i < length; i += 1) {
+            int item_index = free_self_offers[i][0];
+            int item_count = free_self_offers[i][1] + 1;
+
+            skus_chars_count[item_index] -= skus_chars_count[item_index] / item_count;
+        }
+
         int price = 0;
         for (int i = 0, length = skus_chars_count.length; i < length; i += 1) {
             price += getPrice(i, skus_chars_count[i]);
@@ -96,5 +103,6 @@ public class CheckliteSolution {
         return price;
     }
 }
+
 
 
