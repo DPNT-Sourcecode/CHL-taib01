@@ -20,7 +20,8 @@ public class CheckliteSolutionTest {
     }
 
     @Test
-    public void compute_checklite_empty_string() {
+    public void compute_checklite_empty_or_null_string() {
+        assertThat(checkLiteSol.checklite(null), equalTo(0));
         assertThat(checkLiteSol.checklite(""), equalTo(0));
     }
 
@@ -45,5 +46,6 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("aACD"), equalTo(-1));
     }
 }
+
 
 
