@@ -20,5 +20,3 @@ public class HelloSolutionTest {
         assertThat(helloSol.hello("Test"), equalTo("Hello, World!"));
     }
 }
-
-
