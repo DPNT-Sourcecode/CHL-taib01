@@ -48,7 +48,3 @@ public class CheckliteSolutionTest {
         assertThat(checkLiteSol.checklite("aACD"), equalTo(-1));
     }
 }
-
-
-
-
