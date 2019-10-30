@@ -27,16 +27,19 @@ public class CheckliteSolution {
 
     private Integer getPrice(int char_index, int count) {
         switch(char_index) {
+            case 0:
+                return (count / 3) * 130 + (count % 3) * 50;
+            case 1:
+                return (count / 2) * 45 + (count % 2) * 30;
             case 2:
                 return count > 0 ? count * 20 : 0;
             case 3:
                 return count > 0 ? count * 15 : 0;
-            case 1:
-                return (count / 2) * 45 + (count % 2) * 30;
-            case 0:
-                return (count / 3) * 130 + (count % 3) * 50;
+            case 4:
+                return count > 0 ? count * 40 : 0;
             default:
                 return 0;
         }
     }
 }
+
